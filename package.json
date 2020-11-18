@@ -2,6 +2,7 @@
     "name": "leek-code",
     "displayName": "leek.code",
     "description": "A feature rich extension for leek programming",
+    "license": "MIT",
     "version": "0.0.1",
     "engines": {
         "vscode": "^1.51.0"
@@ -9,6 +10,10 @@
     "categories": [
         "Programming Languages"
     ],
+    "scripts": {
+        "build": "tsc",
+        "watch": "tsc --watch"
+    },
     "contributes": {
         "languages": [
             {
@@ -18,6 +23,7 @@
                     "leekscript"
                 ],
                 "extensions": [
+                    ".leek",
                     ".leekscript"
                 ],
                 "configuration": "./language-configuration.json"
@@ -30,5 +36,20 @@
                 "path": "./syntaxes/leekscript.tmLanguage.json"
             }
         ]
+    },
+    "devDependencies": {
+        "@types/node": "^14.14.8",
+        "@types/vscode": "^1.51.0",
+        "husky": "^4.3.0",
+        "prettier": "^2.1.2",
+        "typescript": "^4.0.5"
+    },
+    "husky": {
+        "hooks": {
+            "pre-commit": "prettier --write src/**/*.ts lsp/src/**/*.ts"
+        }
+    },
+    "dependencies": {
+        "vscode-languageclient": "^6.1.3"
     }
 }
