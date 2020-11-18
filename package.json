@@ -1,0 +1,25 @@
+{
+    "name": "leek-code",
+    "displayName": "leek.code",
+    "description": "A feature rich extension for leek programming",
+    "version": "0.0.1",
+    "engines": {
+        "vscode": "^1.51.0"
+    },
+    "categories": [
+        "Programming Languages"
+    ],
+    "contributes": {
+        "languages": [{
+            "id": "leekscript",
+            "aliases": ["LeekScript", "leekscript"],
+            "extensions": [".ls"],
+            "configuration": "./language-configuration.json"
+        }],
+        "grammars": [{
+            "language": "leekscript",
+            "scopeName": "source.leekscript",
+            "path": "./syntaxes/leekscript.tmLanguage.json"
+        }]
+    }
+}
