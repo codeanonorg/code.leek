@@ -7,14 +7,24 @@
 		},
 		{
 			"include": "#strings"
+		},
+		{
+			"include": "#comments"
 		}
 	],
 	"repository": {
 		"keywords": {
-			"patterns": [{
-				"name": "keyword.control.leekscript",
-				"match": "\\b(if|while|for|return)\\b"
-			}]
+			"patterns": [
+				{
+					"name": "keyword.control.leekscript",
+					"match": "\\b(if|while|for|return)\\b"
+				}
+			]
+		},
+		"comments": {
+			"begin": "//",
+			"end": "\n",
+			"name": "comment.line.double-slash.leekscript"
 		},
 		"strings": {
 			"name": "string.quoted.double.leekscript",

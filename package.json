@@ -10,16 +10,25 @@
         "Programming Languages"
     ],
     "contributes": {
-        "languages": [{
-            "id": "leekscript",
-            "aliases": ["LeekScript", "leekscript"],
-            "extensions": [".ls"],
-            "configuration": "./language-configuration.json"
-        }],
-        "grammars": [{
-            "language": "leekscript",
-            "scopeName": "source.leekscript",
-            "path": "./syntaxes/leekscript.tmLanguage.json"
-        }]
+        "languages": [
+            {
+                "id": "leekscript",
+                "aliases": [
+                    "LeekScript",
+                    "leekscript"
+                ],
+                "extensions": [
+                    ".leekscript"
+                ],
+                "configuration": "./language-configuration.json"
+            }
+        ],
+        "grammars": [
+            {
+                "language": "leekscript",
+                "scopeName": "source.leekscript",
+                "path": "./syntaxes/leekscript.tmLanguage.json"
+            }
+        ]
     }
 }
