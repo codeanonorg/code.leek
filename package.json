@@ -4,6 +4,7 @@
     "description": "A feature rich extension for leek programming",
     "license": "MIT",
     "version": "0.0.1",
+    "main": "build/index.js",
     "engines": {
         "vscode": "^1.51.0"
     },

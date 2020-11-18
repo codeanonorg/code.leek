@@ -8,5 +8,6 @@
         "allowSyntheticDefaultImports": true,
         "allowUnreachableCode": false,
         "alwaysStrict": true
-    }
+    },
+    "include": ["src/**/*.ts"]
 }
