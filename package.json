@@ -5,6 +5,7 @@
     "license": "MIT",
     "version": "0.0.1",
     "main": "build/index.js",
+    "activationEvents": ["onLanguage:leekscript", "workspaceContains:**/*.leek", "workspaceContains:**/*.leekscript"],
     "engines": {
         "vscode": "^1.51.0"
     },
@@ -47,7 +48,7 @@
     },
     "husky": {
         "hooks": {
-            "pre-commit": "prettier --write src/**/*.ts lsp/src/**/*.ts"
+            "pre-commit": "prettier --write src/**/*.ts"
         }
     },
     "dependencies": {

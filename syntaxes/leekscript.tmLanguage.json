@@ -18,6 +18,10 @@
 				{
 					"name": "keyword.control.leekscript",
 					"match": "\\b(if|while|for|return)\\b"
+				},
+				{
+					"name": "keyword.other.declaration",
+					"match": "\\b(var)\\b"
 				}
 			]
 		},
