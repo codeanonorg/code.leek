@@ -1,0 +1,6 @@
+var en = getNearestEnemy();
+
+// je suis content
+while () {
+    moveTowards(en);
+}

@@ -5,6 +5,11 @@
     "license": "MIT",
     "version": "0.0.1",
     "main": "build/index.js",
+    "activationEvents": [
+        "onLanguage:leekscript",
+        "workspaceContains:**/*.leek",
+        "workspaceContains:**/*.leekscript"
+    ],
     "engines": {
         "vscode": "^1.51.0"
     },
@@ -36,7 +41,17 @@
                 "scopeName": "source.leekscript",
                 "path": "./syntaxes/leekscript.tmLanguage.json"
             }
-        ]
+        ],
+        "configuration": {
+            "title": "Settings for LeekScript and the extension",
+            "properties": {
+                "leekscript.serverPath": {
+                    "type":"string",
+                    "default":"lsp.leek",
+                    "description": "Path to the LSP executable"
+                }
+            }
+        }
     },
     "devDependencies": {
         "@types/node": "^14.14.8",
@@ -47,7 +62,7 @@
     },
     "husky": {
         "hooks": {
-            "pre-commit": "prettier --write src/**/*.ts lsp/src/**/*.ts"
+            "pre-commit": "prettier --write src/**/*.ts"
         }
     },
     "dependencies": {

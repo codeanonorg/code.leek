@@ -2,19 +2,8 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "type": "shell",
+            "type": "npm",
             "label": "build",
-            "command": "true",
-            "dependsOn": [
-                "build-ext",
-                "build-lsp"
-            ],
-            "dependsOrder": "parallel",
-            "problemMatcher": []
-        },
-        {
-            "type": "npm",
-            "label": "build-ext",
             "script": "build",
             "group": "build",
             "problemMatcher": [],
@@ -22,38 +11,10 @@
         },
         {
             "type": "npm",
-            "label": "build-lsp",
-            "script": "build",
-            "path": "lsp/",
+            "script": "watch",
             "group": "build",
             "problemMatcher": [],
-            "detail": "tsc"
-        },
-        {
-            "type": "shell",
             "label": "watch",
-            "command": "true",
-            "dependsOn": [
-                "watch-ext",
-                "watch-lsp"
-            ],
-            "dependsOrder": "parallel"
-        },
-        {
-            "type": "npm",
-            "script": "watch",
-            "group": "build",
-            "problemMatcher": [],
-            "label": "watch-ext",
-            "detail": "tsc --watch"
-        },
-        {
-            "type": "npm",
-            "script": "watch",
-            "path": "lsp/",
-            "group": "build",
-            "problemMatcher": [],
-            "label": "watch-lsp",
             "detail": "tsc --watch"
         }
     ]
