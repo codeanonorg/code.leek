@@ -1,27 +1,22 @@
 import * as path from "path";
+import * as fs from "fs";
 import { workspace, ExtensionContext } from "vscode";
 
-import { LanguageClient, LanguageClientOptions, ServerOptions, TransportKind } from "vscode-languageclient";
+import { Executable, LanguageClient, LanguageClientOptions, ServerOptions } from "vscode-languageclient";
+import { WorkspaceConfiguration } from "./config";
 
 let client: LanguageClient;
 
 export function activate(context: ExtensionContext) {
+    const config = new WorkspaceConfiguration();
     // The server is implemented in node
-    let serverModule = context.asAbsolutePath(path.join("lsp", "build", "index.js"));
+    let binary = findBinary(config.get("leekscript.serverPath"));
     // The debug options for the server
     // --inspect=6009: runs the server in Node's Inspector mode so VS Code can attach to the server for debugging
-    let debugOptions = { execArgv: ["--nolazy", "--inspect=6009"] };
-
+    const cmd: Executable = { command: binary, options: { env: { RUST_BACKTRACE: "1" } } };
     // If the extension is launched in debug mode then the debug server options are used
     // Otherwise the run options are used
-    let serverOptions: ServerOptions = {
-        run: { module: serverModule, transport: TransportKind.ipc },
-        debug: {
-            module: serverModule,
-            transport: TransportKind.ipc,
-            options: debugOptions,
-        },
-    };
+    let serverOptions: ServerOptions = { run: cmd, debug: cmd };
 
     // Options to control the language client
     let clientOptions: LanguageClientOptions = {
@@ -45,4 +40,15 @@ export function deactivate(): Thenable<void> | undefined {
         return undefined;
     }
     return client.stop();
+}
+
+function findBinary(pathOrName: string): string {
+    if (path.isAbsolute(pathOrName)) return pathOrName;
+    else
+        for (const dir of process.env.PATH?.split(path.delimiter) ?? []) {
+            const absolute = path.join(dir, pathOrName);
+            if (fs.existsSync(absolute)) return absolute;
+        }
+
+    throw new Error(`Server at "${pathOrName} not found`);
 }
